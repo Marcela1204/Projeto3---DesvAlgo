@@ -119,6 +119,27 @@ void alterarTarefas(EscritaTarefas *tarefas, int valortarefa){
 }
 
 void filtrarPrioridade(EscritaTarefas *tarefas, int valortarefa){
+    int resposta;//valor para receber o valor da prioridade
+    printf("Qual valor de prioridade voce procura?\n");//pergunta para o usuario qual é a prioridade
+    printf("R: ");
+    scanf("%d",&resposta);//recebe a resposta
+
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar a prioridade
+        if (tarefas[x].prioridade == resposta) {//se o valor da prioridade == ao valor digitado, ele printa as tarefas que possuem a prioridade digitada
+            printf("Tarefas com o mesmo valor da prioridade digitada: \n");
+            printf("------------------------------------------------------\n");
+            printf("Tarefa %d:\n", x + 1); //printa o n°da tarefa
+            printf("Prioridade: %d\n", tarefas[x].prioridade); //printa a prioridade
+            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
+            printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
+            printf("Estado: %s\n", tarefas[x].estado);//printa o estado
+            printf("------------------------------------------------------");
+            printf("\n");
+        } else{//caso nao entre na conticao o loop reinicia
+            continue;
+        }
+    }
+
 }
 
 void filtrarEstado(){}

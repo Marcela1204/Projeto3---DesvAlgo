@@ -58,31 +58,33 @@ int main() {
     }
 
     else if (tarefa == 5){
-        
+        printf("\n");
+        filtrarPrioridade(TodasTarefas, valortarefa);//leva para funcao filtrarPrioridade
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 6){
-        
+        printf("\n");
     }
 
     else if (tarefa == 7){
-        
+        printf("\n");
     }
 
     else if (tarefa == 8){
-        
+        printf("\n");
     }
 
     else if (tarefa == 9){
-        
+        printf("\n");
     }
 
     else if (tarefa == 10){
-        
+        printf("\n");
     }
 
     else if (tarefa == 11){
-        
+        printf("\n");
     }
 
     else if(tarefa == 0){ //Escolha 0
