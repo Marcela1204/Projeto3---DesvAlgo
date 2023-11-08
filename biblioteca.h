@@ -24,6 +24,8 @@ void deletarTarefa(EscritaTarefas *, int);
 
 void alterarTarefas(EscritaTarefas *, int);
 
+void filtrarPrioridade(EscritaTarefas *, int);
+
 void escrita(EscritaTarefas *, int );
 
 int leitura(EscritaTarefas *);
