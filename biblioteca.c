@@ -24,7 +24,7 @@ void criarTarefa(EscritaTarefas *tarefas){
         printf("Descreva sua tarefa: \nR: ");
         scanf("%s",&tarefas->descricao); //define o valor da descricao na struct
         printf("Qual eh o estado dessa tarefa? \nR: ");
-        scanf("%s",&tarefas->estado);
+        scanf("%s",&tarefas->estado); //define o valor do estado na struct
         printf("Tarefa criada com sucesso!");
         printf("\n");
         break; //finaliza a funcao
@@ -63,6 +63,59 @@ void deletarTarefa(EscritaTarefas *tarefas, int tarefaremover){
 }
 
 void alterarTarefas(EscritaTarefas *tarefas, int valortarefa){
+    int alterando;//variavel para receber o numero da tarefa
+
+    printf("Digite o numero da tarefa a ser alterada: ");//pede para o usuario digitar a tarefa
+    scanf("%d",&alterando);//recebe o valor 
+    while (1) {//loop de verificacao
+        if (alterando <= valortarefa) {//se o valor de alterando for menor ou igual ao valor de valor tarefa (que é onde as tarefas estao guardadas)
+            while (1) {//loop de verificacao
+                int selecao;//variavel para receber a selecao do que vai ser alterado
+                printf("\n"); //pular linha
+                printf("Qual campo deseja alterar:\n" //menu de escolha
+                       "1) Prioriedade;\n"
+                       "2) Categoria;\n"
+                       "3) Descricao;\n"
+                       "4) Estado;\n"
+                       "0) Finalizar operacao.\n");
+                printf("R: ");
+                scanf("%d", &selecao);//recebe o valor 
+
+                if (selecao == 1) {//se for igual a 1, o item modificado vai ser a prioridade
+                    printf("Digite a prioridade da tarefa: ");//pergunta qual eh a nova prioridade
+                    scanf("%d", &tarefas[alterando - 1].prioridade);//recebe e ja guarda na struct a nova prioridade
+                    printf("Alterado com sucesso!");//mensagem de confirmacao
+                    printf("\n");
+                } else if (selecao == 2) {//se for igual a 2, o item modificado vai ser a categoria
+                    printf("Digite a categoria da tarefa: ");//pergunta qual eh a nova categoria
+                    scanf("%[^\n]s", tarefas[alterando - 1].categoria);//recebe e ja guarda na struct a nova categoria
+                    printf("Alterado com sucesso!");//mensagem de confirmacao
+                    printf("\n");
+                } else if (selecao == 3) {//se for igual a 3, o item modificado vai ser a descricao
+                    printf("Digite a descricao da tarefa: ");//pergunta qual eh a nova descricao
+                    scanf("%[^\n]s", tarefas[alterando - 1].descricao);//recebe e ja guarda na struct a nova descricao
+                    printf("Alterado com sucesso!");//mensagem de confirmacao
+                    printf("\n");
+                } else if (selecao == 4) {//se for igual a 4, o item modificado vai ser a estado
+                    printf("Digite a estado da tarefa: ");//pergunta qual eh a novo estado
+                    scanf("%[^\n]s", tarefas[alterando - 1].estado);//recebe e ja guarda na struct a nova estado
+                    printf("Alterado com sucesso!");//mensagem de confirmacao
+                    printf("\n");
+                }
+                else if (selecao == 0) {//se for igual a 0, o programa volta para o menu
+                    return;
+                }
+                else {//se for qualquer outra coisa diferente desses numeros, printa a proxima mensagem e refaz o loop
+                    printf("Digito inexistente\n");
+                    continue;
+                }
+            }
+        } else {//se a condicao nao encontrar a tarefa, ele printa a proxima mensagem e volta para o menu
+            printf("Valor nao encontrado!\n");
+            printf("\n");
+            break;
+        }
+    }
 }
 
 void filtrarPrioridade(EscritaTarefas *tarefas, int valortarefa){
