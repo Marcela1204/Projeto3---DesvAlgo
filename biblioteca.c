@@ -19,46 +19,56 @@ void criarTarefa(EscritaTarefas *tarefas){
         }else{
             tarefas->prioridade = prioridade; //define o valor da struct como o valor definido acima
         }
+
+        int c;
+        while ((c = getchar())!= '\n' && c != EOF);//buffer
         printf("Em qual categoria ela se encaixa? \nR: ");
-        scanf("%s",&tarefas->categoria); //define o valor da categoria na struct
+        scanf("%[^\n]s",&tarefas->categoria); //define o valor da categoria na struct
+        int d;
+        while ((d = getchar())!= '\n' && d != EOF);//buffer
         printf("Descreva sua tarefa: \nR: ");
-        scanf("%s",&tarefas->descricao); //define o valor da descricao na struct
+        scanf("%[^\n]s",&tarefas->descricao); //define o valor da descricao na struct
+        int e;
+        while ((e = getchar())!= '\n' && e != EOF);//buffer
         printf("Qual eh o estado dessa tarefa? \nR: ");
-        scanf("%s",&tarefas->estado); //define o valor do estado na struct
+        scanf("%[^\n]s",&tarefas->estado);//define o valor da estado na struct
         printf("Tarefa criada com sucesso!");
         printf("\n");
         break; //finaliza a funcao
     }
 }
+
 void listarTarefa(EscritaTarefas *tarefas, int valortarefa){
     int i = -1; //inicializa o valor de i como -1 para que a primeira execucao se torne 0 e nao comprometa o resto da funcao
     do{ //inicio do loop
         i++; // incremento da variavel i (vira 0)
-        if(tarefas[i].prioridade == 0){ // se o valor for removido na funcao deletarTarefa, ele se torna 0 e essa a linha o ignora na listagem
+        if(tarefas[i].prioridade <= 0){ // se o valor for removido na funcao deletarTarefa, ele se torna 0 e essa a linha o ignora na listagem
             continue;
         }else{ //caso contrario, ele lista todas as tarefas do programa
-        printf("Tarefa %d:\n",i+1);
-        printf("Prioridade: %d\n",tarefas[i].prioridade);
-        printf("Categoria: %s\n",tarefas[i].categoria);
-        printf("Descricao: %s\n",tarefas[i].descricao);
-        printf("Estado: %s\n",tarefas[i].estado);
-        printf("\n");
+            printf("Tarefa %d:\n",i+1);
+            printf("Prioridade: %d\n",tarefas[i].prioridade);
+            printf("Categoria: %s\n",tarefas[i].categoria);
+            printf("Descricao: %s\n",tarefas[i].descricao);
+            printf("Estado: %s\n", tarefas[i].estado);
+            printf("\n");
 
         }
     } while (i<valortarefa); //continua o loop ate o fim do array definido
 
 }
+
 void deletarTarefa(EscritaTarefas *tarefas, int tarefaremover){
     int remover = tarefaremover-1; //define o valor escolhido pelo usuario como o valor do indice da tarefa a ser removida
-    tarefas[remover].prioridade = 0; //define a prioriedade da tarefa como 0 para ser ignorado em listarTarefa
-    for (int i = 0; i < 300; ++i) { //define todos os caracteres da descricao como nulo
-        tarefas[remover].descricao[i] = '\0';
+    tarefas[remover].prioridade = -1; //define a prioriedade da tarefa como -1 para ser ignorado em listarTarefa
+    for (int i = 0; i < 300; ++i) { 
+        tarefas[remover].descricao[i] = '\0';//define todos os caracteres da descricao como nulo
     }
     for (int j = 0; j < 100; ++j) {
         tarefas[remover].categoria[j] = '\0';//define todos os caracteres da categoria como nulo
     }
-    for (int k = 0; k < 50; ++k) {
+    for (int k = 0; k < 13; ++k) {
         tarefas[remover].estado[k] = '\0';//define todos os caracteres da categoria como nulo
+
     }
 }
 
@@ -142,7 +152,29 @@ void filtrarPrioridade(EscritaTarefas *tarefas, int valortarefa){
 
 }
 
-void filtrarEstado(){}
+void filtrarEstado(EscritaTarefas *tarefas, int valortarefa){
+    char resposta[13];//variavel para receber o estado procurado
+    printf("Qual estado voce procura?\n"); //pergunta para o usuario qual o estado desejado
+    printf("R: ");
+    scanf("%s",resposta);//recebe a resposta
+
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar o estado
+        if (strcmp(tarefas[x].estado, resposta) == 0) {//se a comparacao entre o que esta armazenado em estado na struct e a resposta forem verdadeiras, realiza os passoas abaixo
+            printf("Tarefas com o mesmo estado digitado: \n");
+            printf("------------------------------------------------------\n");
+            printf("Tarefa %d:\n", x + 1);//printa o n°da tarefa
+            printf("Prioridade: %d\n", tarefas[x].prioridade);//printa a prioridade
+            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
+            printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
+            printf("Estado: %s\n", tarefas[x].estado);//printa o estado
+            printf("------------------------------------------------------");
+            printf("\n");
+        } else{//caso nao entre na conticao o loop reinicia
+            continue;
+        }
+    }
+
+}
 
 void filtrarCategoria(){}
 

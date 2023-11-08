@@ -26,6 +26,16 @@ void alterarTarefas(EscritaTarefas *, int);
 
 void filtrarPrioridade(EscritaTarefas *, int);
 
+void filtrarCategoria(EscritaTarefas *, int);
+
+void filtrarPrioCateg(EscritaTarefas *, int);
+
+void exportarPrioridade(EscritaTarefas *, int);
+
+void exportarCategoria(EscritaTarefas *, int);
+
+void exportarPrioCateg(EscritaTarefas *, int);
+
 void escrita(EscritaTarefas *, int );
 
 int leitura(EscritaTarefas *);

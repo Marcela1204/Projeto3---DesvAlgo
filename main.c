@@ -65,6 +65,8 @@ int main() {
 
     else if (tarefa == 6){
         printf("\n");
+        filtrarEstado(TodasTarefas, valortarefa);//leva para funcao filtrarEstado
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 7){
