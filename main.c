@@ -1,6 +1,6 @@
+
 #include <stdio.h>
 #include "biblioteca.h"
-#include <string.h>
 
 int main() {
     int tarefa; //variavel para escolha da opcao do menu
@@ -53,44 +53,36 @@ int main() {
 
     else if (tarefa == 4){
         printf("\n");
-        alterarTarefas(TodasTarefas, valortarefa);
-        escrita(TodasTarefas,valortarefa);
+        alterarTarefas(TodasTarefas, valortarefa); //leva para funcao alterarTarefas
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 5){
-        printf("\n");
-        filtrarPrioridade(TodasTarefas, valortarefa);
-        escrita(TodasTarefas,valortarefa);
+        
     }
 
     else if (tarefa == 6){
-        printf("\n");
-        filtrarEstado();
+        
     }
 
     else if (tarefa == 7){
-        printf("\n");
-        filtrarCategoria();
+        
     }
 
     else if (tarefa == 8){
-        printf("\n");
-        filtrarPrioCateg();
+        
     }
 
     else if (tarefa == 9){
-        printf("\n");
-        exportarPrioridade();
+        
     }
 
     else if (tarefa == 10){
-        printf("\n");
-        exportarCategoria();
+        
     }
 
     else if (tarefa == 11){
-        printf("\n");
-        exportarPrioCateg();
+        
     }
 
     else if(tarefa == 0){ //Escolha 0
