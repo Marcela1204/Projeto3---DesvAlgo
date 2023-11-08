@@ -71,6 +71,8 @@ int main() {
 
     else if (tarefa == 7){
         printf("\n");
+        filtrarCategoria(TodasTarefas, valortarefa);//leva para funcao filtrarCategoria
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 8){
