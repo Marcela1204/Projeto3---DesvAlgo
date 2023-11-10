@@ -76,17 +76,21 @@ int main() {
     }
 
     else if (tarefa == 8){
+        printf("\n");
         filtrarPrioCateg(TodasTarefas, valortarefa); //leva para funcao filtra prioridade e categoria
         escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 9){
+        printf("\n");
         exportarPrioridade(TodasTarefas, valortarefa);//leva para a funcao que vai exportar o filtro de prioridade
         escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 10){
         printf("\n");
+        exportarCategoria(TodasTarefas, valortarefa);//leva para a funcao que vai exportar o filtro de categoria
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 11){
