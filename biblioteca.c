@@ -169,7 +169,7 @@ void filtrarEstado(EscritaTarefas *tarefas, int valortarefa){
             printf("Estado: %s\n", tarefas[x].estado);//printa o estado
             printf("------------------------------------------------------");
             printf("\n");
-        } else{//caso nao entre na conticao o loop reinicia
+        } else{//caso nao entre na condicao, o loop reinicia
             continue;
         }
     }
@@ -177,7 +177,7 @@ void filtrarEstado(EscritaTarefas *tarefas, int valortarefa){
 }
 
 void filtrarCategoria(EscritaTarefas *tarefas, int valortarefa){
-    char resposta[13];//array para receber o categoria procurado
+    char resposta[13];//array para receber a categoria procurada
     printf("Qual categoria voce procura?\n");//pergunta para o usuario qual o categoria desejado
     printf("R: ");
     scanf("%s",resposta);//recebe a resposta
@@ -193,14 +193,41 @@ void filtrarCategoria(EscritaTarefas *tarefas, int valortarefa){
             printf("Estado: %s\n", tarefas[x].estado);//printa o estado
             printf("------------------------------------------------------");
             printf("\n");
-        } else{//caso nao entre na conticao o loop reinicia
+        } else{//caso nao entre na condicao, o loop reinicia
             continue;
         }
     }
 
 }
 
-void filtrarPrioCateg(){}
+void filtrarPrioCateg(EscritaTarefas *tarefas, int valortarefa){
+    char resposta[13];//array para receber a categoria procurada
+    int resposta2;//valor para receber o valor da prioridade
+    printf("Qual valor de prioridade voce procura?\n");//pergunta para o usuario qual a prioridade desejada
+    printf("R: ");
+    scanf("%d",&resposta2);//recebe a resposta
+
+    printf("Qual categoria voce procura?\n");//pergunta para o usuario qual a categoria desejada
+    printf("R: ");
+    scanf("%s",resposta);//recebe a resposta
+
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar o a tarefa solicitada de acordo com o filtro
+        if (strcmp(tarefas[x].categoria, resposta) == 0 && tarefas[x].prioridade == resposta2) {//se a comparação do que está armazenado na struct para categoria e prioridade e as variaveis resposta1 e resposta2 forem verdadeiras, o loop é realizado
+            printf("Tarefas com o mesma prioridade e categoria digitada: \n");
+            printf("------------------------------------------------------\n");
+            printf("Tarefa %d:\n", x + 1);//printa o n°da tarefa
+            printf("Prioridade: %d\n", tarefas[x].prioridade);//printa a prioridade
+            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
+            printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
+            printf("Estado: %s\n", tarefas[x].estado);//printa o estado
+            printf("------------------------------------------------------");
+            printf("\n");
+        } else{//caso nao entre na condicao, o loop reinicia
+            continue;
+        }
+    }
+
+}
 
 void exportarPrioridade(){}
 
