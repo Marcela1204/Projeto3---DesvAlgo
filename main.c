@@ -95,6 +95,8 @@ int main() {
 
     else if (tarefa == 11){
         printf("\n");
+        exportarPrioCateg(TodasTarefas, valortarefa);//leva para a funcao que vai exportar o filtro de categoria e prioridade
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if(tarefa == 0){ //Escolha 0

@@ -282,7 +282,36 @@ void exportarCategoria(EscritaTarefas *tarefas, int valortarefa){
 
 }
 
-void exportarPrioCateg(){}
+void exportarPrioCateg(EscritaTarefas *tarefas, int valortarefa){
+    FILE *f = fopen("textoPrioCatg.txt", "w");//abre o arquivo textoPrioCatg do tipo txt para escrever cada novo filtro de prioridade e categoria
+    char resposta[13];//array para receber a categoria procurada
+    int resposta2;//valor para receber o valor da prioridade
+    printf("Qual valor de prioridade voce procura?\n");//pergunta para o usuario qual a prioridade desejada
+    printf("R: ");
+    scanf("%d",&resposta2);//recebe a resposta
+
+    printf("Qual categoria voce procura?\n");//pergunta para o usuario qual a categoria desejada
+    printf("R: ");
+    scanf("%s",resposta);//recebe a resposta
+
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar o a tarefa solicitada de acordo com o filtro
+        if (strcmp(tarefas[x].categoria, resposta) == 0 && tarefas[x].prioridade == resposta2) {//se a comparação do que está armazenado na struct para categoria e prioridade e as variaveis resposta1 e resposta2 forem verdadeiras, o loop é realizado
+            fprintf(f,"Tarefas com o mesma prioridade e categoria digitada: \n");
+            fprintf(f,"------------------------------------------------------\n");
+            fprintf(f,"Tarefa %d:\n", x + 1);//grava o n° da tarefa
+            fprintf(f,"Prioridade: %d\n", tarefas[x].prioridade);//grava a prioridade filtrada
+            fprintf(f,"Categoria: %s\n", tarefas[x].categoria);//grava a categoria filtrada
+            fprintf(f,"Descricao: %s\n", tarefas[x].descricao);//grava a descricao
+            fprintf(f,"Estado: %s\n", tarefas[x].estado);//grava o estado
+            fprintf(f,"------------------------------------------------------");
+            fprintf(f,"\n");
+        } else{//caso nao entre na condicao, o loop reinicia
+            continue;
+        }
+        fclose(f);//fecha o arquivo
+    }
+
+}
 
 
 
