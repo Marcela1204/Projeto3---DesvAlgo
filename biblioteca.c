@@ -182,7 +182,7 @@ void filtrarCategoria(EscritaTarefas *tarefas, int valortarefa){
     printf("R: ");
     scanf("%s",resposta);//recebe a resposta
 
-    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar o estado
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar a categoria
         if (strcmp(tarefas[x].categoria, resposta) == 0) {//se a comparacao entre o que esta armazenado em estado na struct e a resposta forem verdadeiras, realiza os passos abaixo
             printf("Tarefas com o mesma categoria digitada: \n");
             printf("------------------------------------------------------\n");
@@ -256,7 +256,31 @@ void exportarPrioridade(EscritaTarefas *tarefas, int valortarefa){
     }
 }
 
-void exportarCategoria(){}
+void exportarCategoria(EscritaTarefas *tarefas, int valortarefa){
+    FILE *f = fopen("textoCategoria.txt", "w");//abre o arquivo textoPCategoria do tipo txt para escrever cada novo filtro de categoria
+    char resposta[13];//array para receber a categoria procurada
+    printf("Qual categoria voce procura?\n");//pergunta para o usuario qual o categoria desejado
+    printf("R: ");
+    scanf("%s",resposta);//recebe a resposta
+
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar a categoria
+        if (strcmp(tarefas[x].categoria, resposta) == 0) {//se a comparacao entre o que esta armazenado em estado na struct e a resposta forem verdadeiras, realiza os passos abaixo
+            fprintf(f,"Tarefas com o mesma categoria digitada: \n");
+            fprintf(f,"------------------------------------------------------\n");
+            fprintf(f,"Tarefa %d:\n", x + 1);//grava o n°da tarefa
+            fprintf(f,"Prioridade: %d\n", tarefas[x].prioridade);//grava a prioridade
+            fprintf(f,"Categoria: %s\n", tarefas[x].categoria);//grava a categoria filtrada
+            fprintf(f,"Descricao: %s\n", tarefas[x].descricao);//grava a descricao
+            fprintf(f,"Estado: %s\n", tarefas[x].estado);//grava a estado
+            fprintf(f,"------------------------------------------------------");
+            fprintf(f,"\n");
+        } else{//caso nao entre na condicao, o loop reinicia
+            continue;
+        }
+        fclose(f);//fecha o arquivo
+    }
+
+}
 
 void exportarPrioCateg(){}
 
