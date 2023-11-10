@@ -139,13 +139,13 @@ void filtrarPrioridade(EscritaTarefas *tarefas, int valortarefa){
             printf("Tarefas com o mesmo valor da prioridade digitada: \n");
             printf("------------------------------------------------------\n");
             printf("Tarefa %d:\n", x + 1); //printa o n°da tarefa
-            printf("Prioridade: %d\n", tarefas[x].prioridade); //printa a prioridade
+            printf("Prioridade: %d\n", tarefas[x].prioridade); //printa a prioridade filtrada
             printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
             printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
             printf("Estado: %s\n", tarefas[x].estado);//printa o estado
             printf("------------------------------------------------------");
             printf("\n");
-        } else{//caso nao entre na conticao o loop reinicia
+        } else{//caso nao entre na condicao, o loop reinicia
             continue;
         }
     }
@@ -166,7 +166,7 @@ void filtrarEstado(EscritaTarefas *tarefas, int valortarefa){
             printf("Prioridade: %d\n", tarefas[x].prioridade);//printa a prioridade
             printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
             printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
-            printf("Estado: %s\n", tarefas[x].estado);//printa o estado
+            printf("Estado: %s\n", tarefas[x].estado);//printa o estado filtrado
             printf("------------------------------------------------------");
             printf("\n");
         } else{//caso nao entre na condicao, o loop reinicia
@@ -188,7 +188,7 @@ void filtrarCategoria(EscritaTarefas *tarefas, int valortarefa){
             printf("------------------------------------------------------\n");
             printf("Tarefa %d:\n", x + 1);//printa o n°da tarefa
             printf("Prioridade: %d\n", tarefas[x].prioridade);//printa a prioridade
-            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
+            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria filtrada
             printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
             printf("Estado: %s\n", tarefas[x].estado);//printa o estado
             printf("------------------------------------------------------");
@@ -216,8 +216,8 @@ void filtrarPrioCateg(EscritaTarefas *tarefas, int valortarefa){
             printf("Tarefas com o mesma prioridade e categoria digitada: \n");
             printf("------------------------------------------------------\n");
             printf("Tarefa %d:\n", x + 1);//printa o n°da tarefa
-            printf("Prioridade: %d\n", tarefas[x].prioridade);//printa a prioridade
-            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria
+            printf("Prioridade: %d\n", tarefas[x].prioridade);//printa a prioridade filtrada
+            printf("Categoria: %s\n", tarefas[x].categoria);//printa a categoria filtrada
             printf("Descricao: %s\n", tarefas[x].descricao);//printa a descricao
             printf("Estado: %s\n", tarefas[x].estado);//printa o estado
             printf("------------------------------------------------------");
@@ -229,7 +229,32 @@ void filtrarPrioCateg(EscritaTarefas *tarefas, int valortarefa){
 
 }
 
-void exportarPrioridade(){}
+void exportarPrioridade(EscritaTarefas *tarefas, int valortarefa){
+    FILE *f = fopen("textoPrioridade.txt", "w");//abre o arquivo textoPrioridade do tipo txt para escrever cada novo filtro de prioridade
+
+    int resposta;//valor para receber o valor da prioridade
+    printf("Qual valor de prioridade voce procura?\n");//pergunta para o usuario qual é a prioridade
+    printf("R: ");
+    scanf("%d",&resposta);//recebe a resposta
+
+    for (int x = -1; x < valortarefa; x++) {//entra num loop para procurar a prioridade
+        if (tarefas[x].prioridade == resposta) {//se o valor da prioridade == ao valor digitado, ele printa as tarefas que possuem a prioridade digitada
+            fprintf(f,"Tarefas com o mesmo valor da prioridade digitada: \n");
+            fprintf(f,"------------------------------------------------------\n");
+            fprintf(f,"Tarefa %d:\n", x + 1);//grava o n°da tarefa
+            fprintf(f,"Prioridade: %d\n", tarefas[x].prioridade);//grava a prioridade filtrada
+            fprintf(f,"Categoria: %s\n", tarefas[x].categoria);//grava a categoria
+            fprintf(f,"Descricao: %s\n", tarefas[x].descricao);//grava a descrição
+            fprintf(f,"Estado: %s\n", tarefas[x].estado);//grava a estado
+            fprintf(f,"------------------------------------------------------");
+            fprintf(f,"\n");
+        }
+        else{//caso nao entre na condicao, o loop reinicia
+            continue;
+        }
+        fclose(f);//fecha o arquivo
+    }
+}
 
 void exportarCategoria(){}
 
