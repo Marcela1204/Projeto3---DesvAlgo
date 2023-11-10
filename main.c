@@ -81,7 +81,8 @@ int main() {
     }
 
     else if (tarefa == 9){
-        printf("\n");
+        exportarPrioridade(TodasTarefas, valortarefa);//leva para a funcao que vai exportar o filtro de prioridade
+        escrita(TodasTarefas,valortarefa);//Escreve o array e o contador em um arquivo binario
     }
 
     else if (tarefa == 10){
